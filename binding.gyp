@@ -14,12 +14,11 @@
             "libraries": [
                "-l<(sqlite_libname)"
             ],
-            "conditions": [ [ "OS=='linux'", {"libraries+":["-Wl,-rpath=<@(sqlite)/lib"]} ] ],
-            "conditions": [ [ "OS!='win'", {"libraries+":["-L<@(sqlite)/lib"]} ] ],
+            "conditions": [ [ "OS=='win'", {"libraries+":["-L<@(sqlite)"]} ] ],
             'msvs_settings': {
               'VCLinkerTool': {
                 'AdditionalLibraryDirectories': [
-                  '<(sqlite)/lib'
+                  '<(sqlite)'
                 ],
               },
             }
