@@ -10,15 +10,15 @@
       "include_dirs": ["<!(node -e \"require('nan')\")"],
       "conditions": [
         ["sqlite != 'internal'", {
-            "include_dirs": [ "<(sqlite)" ],
+            "include_dirs": [ "<(sqlite)/include" ],
             "libraries": [
                "-l<(sqlite_libname)"
             ],
-            "conditions": [ [ "OS=='win'", {"libraries+":["-L<@(sqlite)"]} ] ],
+            "conditions": [ [ "OS=='win'", {"libraries+":["-L<@(sqlite)/lib"]} ] ],
             'msvs_settings': {
               'VCLinkerTool': {
                 'AdditionalLibraryDirectories': [
-                  '<(sqlite)'
+                  '<(sqlite)/lib'
                 ],
               },
             }
